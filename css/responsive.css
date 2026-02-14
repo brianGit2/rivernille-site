@@ -1,0 +1,131 @@
+@media(max-width:1024px){}@media(max-width:992px){.sm-padding{padding:15px}.header-section .navbar-brand{height:80px;padding:0;display:flex;align-items:center}.menu-btn,.js #mainmenu{display:none}.about-promo{padding-left:0}.project-2 .project-item,.js .slicknav_menu{display:block}.error-content .error-info{padding-left:10px}.counter-content{text-align:left;padding-left:70px}.counter-wrap .col-lg-4:last-child{margin-top:50px}.projects-carousel .owl-nav div,.service-carousel .owl-nav div{left:0}.projects-carousel .owl-nav div.owl-next,.service-carousel .owl-nav div.owl-next{right:0}.work-pro-item .number-line{display:none}.section-heading h2{font-size:22px;line-height:26px}.cta-content h2{font-size:36px}}@media all and (min-width:480px) and (max-width:768px){}@media all and (max-width:767px){body,p{font-size:12px;line-height:22px}h1{font-size:30px}h2{font-size:22px}h3{font-size:16px}p br{display:none}.padding{padding:60px 0}.xs-padding{padding:15px}.page-header{height:250px}.page-content h2{font-size:30px;margin:0}.about-content h2{font-size:24px;line-height:36px}.cta-content h2{font-size:28px;line-height:1.2}.error-content{display:block}.error-content .error-info h2{font-size:120px;line-height:120px;margin-bottom:30px}.error-content .error-info a{display:block}.contact-form .form-group .col-sm-6:first-child{margin-bottom:15px}.contact-info h2{line-height:28px}.sidebar-wrap{padding-left:0}.blog-single-content h2 a{font-size:22px;line-height:28px}.blog-single-content h2{line-height:28px}blockquote p{line-height:32px}.work-pro-item{padding:0 30px}.service-content h2{line-height:28px}.service-section.section-2{padding-bottom:60px}.services-list .offset-top{transform:translateY(0)}#scroll-to-top{width:35px;height:35px;line-height:35px;bottom:20px;right:20px}.projects-section .col-lg-4.text-right{text-align:left!important}.projects-carousel{margin-top:40px}.project-single-carousel{margin-bottom:40px}.project-single-content{padding-left:0}}@media all and (max-width:580px){.subscribe-form{width:100%}.counter-wrap .col-lg-4:first-child{margin-bottom:50px}.counter-content{text-align:center;padding-left:0}.testi-item .fa-quote-right{display:none}}@media all and (max-width:420px){}@media all and (max-width:380px){} /* Centered designer credit */
+.designer-credit-centered {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 12px;
+  opacity: 0.7;
+  color: #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+}
+
+.designer-name {
+  font-weight: 600;
+  color: #fff;
+}
+
+.designer-icon img {
+  width: 16px;
+  height: 16px;
+  filter: brightness(0) invert(1);
+  opacity: 0.8;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.designer-icon:hover img {
+  transform: scale(1.15);
+  opacity: 1;
+}
+
+/* Reduce footer spacing */
+.widget-section.padding {
+  padding: 40px 0 20px !important;
+}
+
+/* Modal base */
+.image-modal { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; z-index: 9999; }
+
+/* Backdrop */
+.image-modal__backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.78); transition: opacity 200ms ease; }
+
+/* Content */
+.image-modal__content { position: relative; max-width: 92vw; max-height: 92vh; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 12px; box-sizing: border-box; }
+
+/* Image */
+.image-modal__img { max-width: 100%; max-height: calc(92vh - 120px); object-fit: contain; display: block; border-radius: 6px; background: #111; }
+
+/* Caption */
+.image-modal__caption { color: #fff; font-size: 0.95rem; text-align: center; max-width: 90vw; }
+
+/* Close button (SVG) */
+.image-modal__close { position: absolute; top: 10px; right: 10px; z-index: 6; background: rgba(0,0,0,0.55); color: #fff; border: none; width: 44px; height: 44px; border-radius: 50%; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
+
+/* Nav arrows */
+.image-modal__nav { position: absolute; top: 50%; transform: translateY(-50%); z-index: 6; background: rgba(0,0,0,0.45); color: #fff; border: none; width: 44px; height: 44px; border-radius: 50%; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; font-size: 18px; }
+.image-modal__prev { left: 12px; }
+.image-modal__next { right: 12px; }
+
+/* Actions row */
+.image-modal__actions { display: flex; gap: 8px; align-items: center; }
+.image-modal__download { color: #fff; background: rgba(0,0,0,0.45); padding: 6px 10px; border-radius: 6px; text-decoration: none; font-size: 0.95rem; }
+
+/* Focus styles */
+.image-modal__close:focus, .image-modal__nav:focus, .image-modal__download:focus { outline: 3px solid rgba(255,255,255,0.18); outline-offset: 2px; }
+
+/* Show modal */
+.image-modal.open { display: flex; }
+
+/* Prevent background scroll */
+body.modal-open { overflow: hidden; touch-action: none; }
+/* Desktop / larger screens */
+.subscribe-form {
+  display: flex;
+  align-items: center;   /* keeps input + button aligned vertically */
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.subscribe-form .form-input {
+  flex: 1;
+  max-width: 300px;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  height: 42px;          /* same height as button */
+}
+
+.subscribe-form .submit-btn {
+  flex-shrink: 0;
+  padding: 10px 18px;
+  height: 42px;          /* matches input height */
+  background: #ff6600;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.subscribe-form .submit-btn:hover {
+  background: #e65c00;
+}
+
+/* Mobile screens */
+@media (max-width: 580px) {
+  .subscribe-form {
+    flex-direction: column;   /* stack input + button vertically */
+    align-items: stretch;
+  }
+
+  .subscribe-form .form-input,
+  .subscribe-form .submit-btn {
+    max-width: 100%;          /* full width on mobile */
+    margin-bottom: 10px;      /* spacing between stacked elements */
+    height: auto;             /* let them expand naturally on mobile */
+  }
+}
+.subscribe-form .form-input,
+.subscribe-form .submit-btn {
+  height: 65px;             /* same height for both */
+}
+.subscribe-form .submit-btn {
+  font-family: inherit;   /* same as site font */
+  font-weight: 600;       /* bold but clean */
+}
+
+@media (max-width: 580px) {
+  .footer-widget img {
+    margin-bottom: 12px; /* slightly tighter on small screens */
+  }
+}

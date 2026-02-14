@@ -1,0 +1,135 @@
+/* Uniform Grid Layout with Cropped Tiles */
+
+.projects-section {
+  padding: 60px 0;
+}
+
+.projects-section .row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  padding: 0 15px;
+}
+
+.col-lg-4,
+.col-sm-6 {
+  padding: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.project-item {
+  overflow: hidden;
+  border-radius: 8px;
+  position: relative;
+  background-color: #f5f5f5;
+  aspect-ratio: 1 / 1;
+  cursor: pointer;
+}
+
+.project-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.project-item:hover img {
+  transform: scale(1.08);
+  filter: brightness(0.8);
+}
+
+.view-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  color: white;
+  font-size: 32px;
+  text-decoration: none;
+  z-index: 2;
+}
+
+.project-item:hover .view-icon {
+  opacity: 1;
+}
+
+.view-icon:focus {
+  opacity: 1;
+  outline: 2px solid white;
+  outline-offset: -4px;
+}
+
+.view-icon i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Tablet adjustments */
+@media (max-width: 1024px) {
+  .projects-section .row {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+    padding: 0 10px;
+  }
+
+  .view-icon {
+    font-size: 28px;
+  }
+}
+
+/* Mobile tablet */
+@media (max-width: 768px) {
+  .projects-section .row {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    padding: 0 10px;
+  }
+
+  .project-item {
+    aspect-ratio: 1 / 1;
+  }
+
+  .view-icon {
+    font-size: 24px;
+  }
+}
+
+/* Mobile phone */
+@media (max-width: 580px) {
+  .projects-section .row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding: 0 8px;
+  }
+
+  .project-item {
+    aspect-ratio: 1 / 1;
+  }
+
+  .view-icon {
+    font-size: 20px;
+  }
+}
+
+/* Small phones */
+@media (max-width: 360px) {
+  .projects-section .row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 0 5px;
+  }
+
+  .view-icon {
+    font-size: 18px;
+  }
+}
+

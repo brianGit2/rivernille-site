@@ -1,0 +1,54 @@
+/* Compact footer styles - reduce vertical whitespace */
+.widget-section.padding{padding:16px 0}
+.widget-section.padding.compact-footer{padding-top:12px;padding-bottom:12px}
+.widget-section .container{padding-left:0;padding-right:0}
+.widget-section .widget-content{margin-bottom:8px}
+.widget-section .widget-content p{margin:6px 0}
+.widget-section .widget-content h4{margin-bottom:8px}
+.designer-credit-centered{display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 0;color:#cfcfd6;font-size:13px}
+.designer-credit-centered span{font-size:12px;color:#9fa6b0}
+.designer-credit-centered .designer-name{color:#ffffff;font-weight:600}
+.designer-credit-centered .designer-icon{display:inline-flex;align-items:center}
+.widget-section img{max-height:42px;width:auto;display:block}
+@media(max-width:580px){
+  .widget-section.padding{padding:10px 0}
+  .designer-credit-centered{padding:4px 0}
+}
+
+/* Increase only footer logo visibility */
+.widget-section .widget-content a img,
+.widget-section .widget-content img {
+max-height: 139px;
+width: auto;
+display: block;
+}
+
+.footer-widget h4 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.footer-widget p,
+.footer-links li a {
+  font-size: 15px;
+  line-height: 1.6;
+  font-weight: 600;
+}
+.footer-bottom p {
+  font-size: 14px;
+}
+.footer-section {
+  padding: 40px 0; /* tighter than default */
+}
+.footer-widget {
+  margin-bottom: 20px; /* reduce spacing between blocks */
+}
+.footer-bottom {
+  margin-top: 10px; /* less gap above credits */
+}
+
+.footer-widget img {
+  max-height: 85px;
+  width: auto;
+}
+

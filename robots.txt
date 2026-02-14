@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://rivernilleconstruction.co.ke/sitemap.xml
+
+# Crawl-delay optional (uncomment to slow aggressive crawlers)
+# Crawl-delay: 10
+
+# Recommended: Disallow admin or private folders (if any)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Note: Google respects robots.txt and will read the sitemap above

@@ -1,0 +1,146 @@
+# RiverNille Construction - Performance & Security Optimizations
+# Generated: 2026-02-06
+
+# ============================================================================
+# 1. HTTPS ENFORCEMENT
+# ============================================================================
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# ============================================================================
+# CUSTOM REDIRECTS - Fix old blog URL
+# ============================================================================
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Redirect blog-single to blog (absolute path, stop processing)
+  RewriteRule ^blog-single$ https://www.rivernilleconstruction.co.ke/blog [R=301,L]
+</IfModule>
+
+
+
+# ============================================================================ # EXCEPTIONS - Do not rewrite sitemap or assets # ============================================================================ <IfModule mod_rewrite.c> RewriteEngine On # Skip sitemap.xml RewriteRule ^sitemap\.xml$ - [L] # Skip robots.txt RewriteRule ^robots\.txt$ - [L] # Skip CSS, JS, images, XML RewriteCond %{REQUEST_URI} \.(css|js|png|jpg|jpeg|gif|svg|ico|xml)$ [NC] RewriteRule .* - [L] </IfModule> # Ensure XML served with correct MIME type AddType application/xml .xml
+# ============================================================================
+# 2. REMOVE .html EXTENSION FROM URLs
+# ============================================================================
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  
+  # Remove .html from URLs while preserving direct .html access
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^([^\.]+)$ $1.html [L]
+  
+  # Redirect requests with .html to clean URLs
+  RewriteCond %{THE_REQUEST} ^.*/([^.]+)\.html
+  RewriteRule ^(.+)\.html$ /$1 [R=301,L]
+</IfModule>
+
+# ============================================================================
+# 3. BROWSER CACHING - AGGRESSIVE CACHING FOR PERFORMANCE
+# ============================================================================
+<IfModule mod_expires.c>
+  ExpiresActive On
+  
+  # Images - Cache for 1 year
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+  
+  # CSS - Cache for 1 month
+  ExpiresByType text/css "access plus 1 month"
+  
+  # JavaScript - Cache for 1 month
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType text/javascript "access plus 1 month"
+  
+  # Fonts - Cache for 1 year
+  ExpiresByType font/ttf "access plus 1 year"
+  ExpiresByType font/otf "access plus 1 year"
+  ExpiresByType font/woff "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType application/font-woff "access plus 1 year"
+  
+  # HTML - Cache for 1 week (so updates are visible eventually)
+  ExpiresByType text/html "access plus 1 week"
+  
+  # Default
+  ExpiresDefault "access plus 2 days"
+</IfModule>
+
+# ============================================================================
+# 4. GZIP COMPRESSION - REDUCE FILE SIZES
+# ============================================================================
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/plain
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/xml
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE text/javascript
+  AddOutputFilterByType DEFLATE application/xml
+  AddOutputFilterByType DEFLATE application/xhtml+xml
+  AddOutputFilterByType DEFLATE application/rss+xml
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE application/x-javascript
+  AddOutputFilterByType DEFLATE application/x-font-ttf
+  AddOutputFilterByType DEFLATE application/x-font-otf
+  AddOutputFilterByType DEFLATE font/ttf
+  AddOutputFilterByType DEFLATE font/otf
+  AddOutputFilterByType DEFLATE font/woff
+  AddOutputFilterByType DEFLATE font/woff2
+</IfModule>
+
+# ============================================================================
+# 5. PERFORMANCE HEADERS
+# ============================================================================
+<IfModule mod_headers.c>
+  # Cache Control Headers
+  <FilesMatch "\.(jpg|jpeg|png|gif|ico|css|js|woff|woff2|ttf|svg|eot)$">
+    Header set Cache-Control "max-age=31536000, public"
+  </FilesMatch>
+  
+  # HTML Cache Control
+  <FilesMatch "\.html$">
+    Header set Cache-Control "max-age=604800, public"
+  </FilesMatch>
+  
+  # Security Headers
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set X-XSS-Protection "1; mode=block"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  
+  # Performance Headers
+  Header set X-UA-Compatible "IE=edge"
+</IfModule>
+
+# ============================================================================
+# 6. PHP OPTIMIZATION
+# ============================================================================
+php_value memory_limit 256M
+php_value post_max_size 100M
+php_value upload_max_filesize 100M
+php_value max_execution_time 300
+
+# ============================================================================
+# 7. DIRECTORY PROTECTION
+# ============================================================================
+<FilesMatch "^\.(htaccess|htpasswd)$">
+  Deny from all
+</FilesMatch>
+
+# ============================================================================
+# 8. PREVENT HOTLINKING
+# ============================================================================
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP_REFERER} !^$
+  RewriteCond %{HTTP_REFERER} !^https?://(www\.)?rivernilleconstruction\.co\.ke [NC]
+  RewriteRule \.(jpg|jpeg|png|gif|ico)$ - [NC,F,L]
+</IfModule>
